@@ -1,0 +1,104 @@
+{
+  "app": {
+    "title": "Japanese Kana Memory Game",
+    "description": "Test and improve your knowledge of Japanese Hiragana and Katakana characters!"
+  },
+  "kana": {
+    "hiragana": "Hiragana",
+    "katakana": "Katakana",
+    "both": "Hiragana & Katakana",
+    "hiraganaDesc": "Practice the basic cursive Japanese script used for native words.",
+    "katakanaDesc": "Learn the angular Japanese script used primarily for foreign words.",
+    "bothDesc": "Challenge yourself with both Hiragana and Katakana characters.",
+    "referenceChart": "Kana Reference Chart",
+    "basic": "Basic Characters",
+    "dakutenHandakuten": "Dakuten & Handakuten Characters",
+    "yoon": "Yōon Characters"
+  },
+  "buttons": {
+    "practice": "Practice {{type}}",
+    "practiceBoth": "Practice Both",
+    "back": "Back",
+    "continue": "Continue",
+    "check": "Check",
+    "skip": "Skip",
+    "showHint": "Show Hint",
+    "hideHint": "Hide Hint",
+    "close": "Close",
+    "returnToStart": "Return to Start",
+    "playAgain": "Play Again",
+    "practiceIncorrect": "Practice Incorrect Only"
+  },
+  "options": {
+    "title": "Game Options",
+    "subtitle": "Customize your {{type}} practice session",
+    "specialCharacters": "Special Characters",
+    "includeYoon": "Include Yōon (やゆよ-based digraphs)",
+    "includeDakuten": "Include Dakuten & Handakuten",
+    "characterCount": "Character Count",
+    "timerOptions": "Timer Options",
+    "enableTimer": "Enable Timer",
+    "timeLimit": "Time Limit (seconds)",
+    "minute": "minute",
+    "minutes": "minutes"
+  },
+  "selection": {
+    "title": "Select Characters",
+    "subtitle": "Choose which {{type}} characters you want to practice",
+    "mode": {
+      "random": "Random Selection",
+      "manual": "Manual Selection"
+    },
+    "randomDesc": "{{count}} random characters will be selected from the available set.",
+    "manualDesc": "Select the specific characters you want to practice",
+    "selected": "Selected: {{count}}",
+    "characterTimer": "Character Timer",
+    "enableCharacterTimer": "Enable per-character timer",
+    "timePerCharacter": "Time per Character (seconds)",
+    "shuffleCharacters": "Shuffle characters during practice",
+    "currentOptions": "Currently selected options:",
+    "type": "Character type: {{type}}",
+    "yoon": "Yōon characters: {{value}}",
+    "dakuten": "Dakuten & Handakuten: {{value}}",
+    "available": "Total characters available: {{count}}"
+  },
+  "game": {
+    "character": "Character {{current}} of {{total}}",
+    "timeRemaining": "Time Remaining",
+    "typeRomaji": "Type the romaji...",
+    "incorrect": "Incorrect!",
+    "correctAnswer": "The correct answer is: {{answer}}",
+    "hint": {
+      "text": "This is a {{type}} character{{category}}. The first letter is \"{{letter}}\".",
+      "category": " ({{category}})"
+    }
+  },
+  "results": {
+    "title": "Results",
+    "performance": {
+      "excellent": "Excellent job! You're becoming a master!",
+      "great": "Great work! Keep practicing!",
+      "good": "Good effort! You're making progress.",
+      "start": "Nice start! Regular practice will help improve."
+    },
+    "stats": {
+      "correct": "Correct",
+      "incorrect": "Incorrect",
+      "accuracy": "Accuracy",
+      "summary": "Practice Summary",
+      "practiceType": "Practice Type:",
+      "charactersPracticed": "Characters Practiced:",
+      "timeTaken": "Time Taken:",
+      "specialCharacters": "Special Characters:",
+      "none": "None"
+    },
+    "review": {
+      "title": "Characters to Review"
+    }
+  },
+  "language": {
+    "select": "Select Language",
+    "en": "English",
+    "id": "Bahasa Indonesia"
+  }
+}
