@@ -47,7 +47,7 @@ const Game: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6">
+    <div className="min-h-screen bg-gray-50 px-4 sm:px-6">
       <LanguageSelector />
       <div className="max-w-6xl mx-auto">
         {renderScreen()}

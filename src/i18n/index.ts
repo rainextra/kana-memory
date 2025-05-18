@@ -7,15 +7,20 @@ import id from './locales/id.json';
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
-  .init({
-    resources: {
-      en: { translation: en },
-      id: { translation: id }
-    },
-    fallbackLng: 'en',
-    interpolation: {
-      escapeValue: false
-    }
-  });
+ .init({
+  detection: {
+    order: ['localStorage', 'navigator'],
+    lookupLocalStorage: 'preferred-language', // your custom key
+  },
+  resources: {
+    en: { translation: en },
+    id: { translation: id },
+  },
+  fallbackLng: 'en',
+  interpolation: {
+    escapeValue: false
+  }
+});
+
 
 export default i18n;
