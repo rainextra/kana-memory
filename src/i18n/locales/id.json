@@ -1,104 +1,116 @@
 {
-  "app": {
-    "title": "Permainan Memori Kana Jepang",
-    "description": "Uji dan tingkatkan pengetahuan Anda tentang karakter Hiragana dan Katakana Jepang!"
-  },
-  "kana": {
-    "hiragana": "Hiragana",
-    "katakana": "Katakana",
-    "both": "Hiragana & Katakana",
-    "hiraganaDesc": "Latih skrip kursif dasar Jepang yang digunakan untuk kata-kata asli.",
-    "katakanaDesc": "Pelajari skrip Jepang bersudut yang terutama digunakan untuk kata-kata asing.",
-    "bothDesc": "Tantang diri Anda dengan karakter Hiragana dan Katakana.",
-    "referenceChart": "Tabel Referensi Kana",
-    "basic": "Karakter Dasar",
-    "dakutenHandakuten": "Karakter Dakuten & Handakuten",
-    "yoon": "Karakter Yōon"
-  },
-  "buttons": {
-    "practice": "Latih {{type}}",
-    "practiceBoth": "Latih Keduanya",
-    "back": "Kembali",
-    "continue": "Lanjutkan",
-    "check": "Periksa",
-    "skip": "Lewati",
-    "showHint": "Tampilkan Petunjuk",
-    "hideHint": "Sembunyikan Petunjuk",
-    "close": "Tutup",
-    "returnToStart": "Kembali ke Awal",
-    "playAgain": "Main Lagi",
-    "practiceIncorrect": "Latih yang Salah Saja"
-  },
-  "options": {
-    "title": "Opsi Permainan",
-    "subtitle": "Sesuaikan sesi latihan {{type}} Anda",
-    "specialCharacters": "Karakter Khusus",
-    "includeYoon": "Sertakan Yōon (digraf berbasis やゆよ)",
-    "includeDakuten": "Sertakan Dakuten & Handakuten",
-    "characterCount": "Jumlah Karakter",
-    "timerOptions": "Opsi Timer",
-    "enableTimer": "Aktifkan Timer",
-    "timeLimit": "Batas Waktu (detik)",
-    "minute": "menit",
-    "minutes": "menit"
-  },
-  "selection": {
-    "title": "Pilih Karakter",
-    "subtitle": "Pilih karakter {{type}} yang ingin Anda latih",
-    "mode": {
-      "random": "Pilihan Acak",
-      "manual": "Pilihan Manual"
-    },
-    "randomDesc": "{{count}} karakter acak akan dipilih dari set yang tersedia.",
-    "manualDesc": "Pilih karakter spesifik yang ingin Anda latih",
-    "selected": "Terpilih: {{count}}",
-    "characterTimer": "Timer Karakter",
-    "enableCharacterTimer": "Aktifkan timer per karakter",
-    "timePerCharacter": "Waktu per Karakter (detik)",
-    "shuffleCharacters": "Acak karakter selama latihan",
-    "currentOptions": "Opsi yang dipilih saat ini:",
-    "type": "Tipe karakter: {{type}}",
-    "yoon": "Karakter Yōon: {{value}}",
-    "dakuten": "Dakuten & Handakuten: {{value}}",
-    "available": "Total karakter tersedia: {{count}}"
-  },
-  "game": {
-    "character": "Karakter {{current}} dari {{total}}",
-    "timeRemaining": "Sisa Waktu",
-    "typeRomaji": "Ketik romaji...",
-    "incorrect": "Salah!",
-    "correctAnswer": "Jawaban yang benar adalah: {{answer}}",
-    "hint": {
-      "text": "Ini adalah karakter {{type}}{{category}}. Huruf pertama adalah \"{{letter}}\".",
-      "category": " ({{category}})"
-    }
-  },
-  "results": {
-    "title": "Hasil",
-    "performance": {
-      "excellent": "Kerja bagus! Anda menjadi ahli!",
-      "great": "Hebat! Terus berlatih!",
-      "good": "Usaha yang baik! Anda membuat kemajuan.",
-      "start": "Awal yang bagus! Latihan rutin akan membantu meningkatkan."
-    },
-    "stats": {
-      "correct": "Benar",
-      "incorrect": "Salah",
-      "accuracy": "Akurasi",
-      "summary": "Ringkasan Latihan",
-      "practiceType": "Tipe Latihan:",
-      "charactersPracticed": "Karakter Dilatih:",
-      "timeTaken": "Waktu Diambil:",
-      "specialCharacters": "Karakter Khusus:",
-      "none": "Tidak Ada"
-    },
-    "review": {
-      "title": "Karakter untuk Ditinjau"
-    }
-  },
-  "language": {
-    "select": "Pilih Bahasa",
-    "en": "English",
-    "id": "Bahasa Indonesia"
-  }
+	"app": {
+		"title": "Permainan Memori Kana Jepang",
+		"description": "Uji dan tingkatkan pengetahuan Anda tentang karakter Hiragana dan Katakana Jepang!"
+	},
+	"kana": {
+		"hiragana": "Hiragana",
+		"katakana": "Katakana",
+		"both": "Hiragana & Katakana",
+		"hiraganaDesc": "Latih skrip kursif dasar Jepang yang digunakan untuk kata-kata asli.",
+		"katakanaDesc": "Pelajari skrip Jepang bersudut yang terutama digunakan untuk kata-kata asing.",
+		"bothDesc": "Tantang diri kamu dengan karakter Hiragana dan Katakana.",
+		"referenceChart": "Tabel Referensi Kana",
+		"basic": "Karakter Dasar",
+		"dakutenHandakuten": "Karakter Dakuten & Handakuten",
+		"yoon": "Karakter Yōon"
+	},
+	"buttons": {
+		"practice": "Latih {{type}}",
+		"practiceBoth": "Latih Keduanya",
+		"back": "Kembali",
+		"continue": "Lanjutkan",
+		"check": "Periksa",
+		"skip": "Lewati",
+		"showHint": "Tampilkan Petunjuk",
+		"hideHint": "Sembunyikan Petunjuk",
+		"close": "Tutup",
+		"returnToStart": "Kembali ke Awal",
+		"playAgain": "Main Lagi",
+		"practiceIncorrect": "Latih yang Salah Saja",
+		"endGame": "Akhiri Permainan"
+	},
+	"options": {
+		"title": "Pengaturan Permainan",
+		"description": "Sesuaikan sesi latihan {{type}} kamu",
+		"characterOptions": "Pengaturan Karakter",
+		"specialCharacters": "Karakter Khusus",
+		"includeYoon": "Sertakan Yōon (digraf berbasis やゆよ)",
+		"includeDakuten": "Sertakan Dakuten & Handakuten",
+		"characterCount": "Jumlah Karakter",
+		"timerOptions": "Pengaturan Waktu",
+		"enableTimer": "Aktifkan timer per sesi game",
+		"timerDuration": "Batas Waktu (dalam detik)",
+		"minutes": "{{count}} menit",
+		"minutes_plural": "{{count}} menit",
+		"answerMode": "Jenis Jawaban",
+		"typing": "Ketik Manual",
+		"multipleChoice": "Pilihan Ganda",
+		"characterTimerLabel": "Timer per Karakter",
+		"enableCharacterTimer": "Aktifkan timer untuk setiap karakter",
+		"enableTimerSession": "Aktifkan timer per sesi game"
+	},
+	"selection": {
+		"title": "Pilih Karakter",
+		"subtitle": "Pilih karakter {{type}} yang ingin Anda latih",
+		"mode": {
+			"label": "Mode Pemilihan Huruf",
+			"random": "Pilihan Acak",
+			"manual": "Pilihan Manual"
+		},
+		"randomDesc": "{{count}} karakter acak akan dipilih dari set yang tersedia.",
+		"manualDesc": "Pilih karakter spesifik yang ingin Anda latih",
+		"selected": "Terpilih: {{count}}",
+		"characterTimer": "Timer Karakter",
+		"enableCharacterTimer": "Aktifkan timer per karakter",
+		"timePerCharacter": "Waktu per Karakter (detik)",
+		"shuffleCharacters": "Acak karakter selama latihan",
+		"currentOptions": "Opsi yang dipilih saat ini:",
+		"type": "Tipe karakter: {{type}}",
+		"yoon": "Karakter Yōon: {{value}}",
+		"dakuten": "Dakuten & Handakuten: {{value}}",
+		"available": "Total karakter tersedia: {{count}}"
+	},
+	"game": {
+		"character": "Karakter {{current}} dari {{total}}",
+		"timeRemaining": "Sisa Waktu",
+		"typeRomaji": "Ketik romaji...",
+		"incorrect": "Salah!",
+		"notAnswer": "Waktu Habis!",
+		"correctAnswer": "Jawaban yang benar adalah: <strong>{{answer}}</strong>",
+		"characterProgress": "Karakter ke-{{current}} dari {{total}}",
+		"hint": {
+			"text": "Ini adalah karakter {{type}}{{category}}. Huruf pertama adalah \"{{letter}}\".",
+			"category": " ({{category}})"
+		}
+	},
+	"results": {
+		"title": "Hasil",
+		"performance": {
+			"excellent": "Kerja bagus! Anda menjadi ahli!",
+			"great": "Hebat! Terus berlatih!",
+			"good": "Usaha yang baik! Anda membuat kemajuan.",
+			"start": "Awal yang bagus! Latihan rutin akan membantu meningkatkan."
+		},
+		"stats": {
+			"correct": "Benar",
+			"incorrect": "Salah",
+			"accuracy": "Akurasi",
+			"summary": "Ringkasan Latihan",
+			"practiceType": "Tipe Latihan:",
+			"charactersPracticed": "Karakter Dilatih:",
+			"timeTaken": "Waktu Diambil:",
+			"specialCharacters": "Karakter Khusus:",
+			"none": "Tidak Ada",
+			"perfectBadge": "Skor Sempurna"
+		},
+		"review": {
+			"title": "Karakter untuk Ditinjau"
+		}
+	},
+	"language": {
+		"select": "Pilih Bahasa",
+		"en": "English",
+		"id": "Bahasa Indonesia"
+	}
 }

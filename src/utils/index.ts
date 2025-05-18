@@ -60,7 +60,7 @@ export const formatTime = (seconds: number): string => {
 
 // Get character color based on type
 export const getCharacterColor = (type: 'hiragana' | 'katakana'): string => {
-  return type === 'hiragana' ? 'text-indigo-600' : 'text-pink-600';
+  return type === 'hiragana' ? 'text-indigo-600' : 'text-pink-700';
 };
 
 // Get a friendly name for kana type
@@ -75,4 +75,19 @@ export const getKanaTypeName = (type: 'hiragana' | 'katakana' | 'both'): string 
     default:
       return 'Kana';
   }
+};
+
+export function getMultipleChoices(correct: string, pool: KanaCharacter[]): string[] {
+  const others = pool
+    .map((char) => char.romaji)
+    .filter((r) => r !== correct);
+
+  const shuffled = shuffleArray(others).slice(0, 2); // ambil 2 pilihan salah
+  const choices = shuffleArray([correct, ...shuffled]);
+  return choices;
+}
+
+export const getRandomColor = () => {
+  const colors = ['#facc15', '#34d399', '#60a5fa', '#f87171', '#c084fc'];
+  return colors[Math.floor(Math.random() * colors.length)];
 };

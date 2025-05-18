@@ -1,5 +1,6 @@
 export type KanaType = 'hiragana' | 'katakana' | 'both';
 export type GameStatus = 'start' | 'options' | 'character-selection' | 'playing' | 'results';
+export type AnswerMode = 'typing' | 'multiple-choice';
 
 export interface KanaCharacter {
   kana: string;
@@ -19,6 +20,7 @@ export interface GameOptions {
   characterTimer: boolean;
   characterTimerDuration: number; // in seconds
   shuffleManualSelection: boolean;
+  answerMode: AnswerMode; // ✅ <-- tambahkan di sini
 }
 
 export interface GameState {
@@ -40,3 +42,12 @@ export interface GameResult {
   accuracy: number;
   timeTaken: number; // in seconds
 }
+
+export interface KanaCharacter {
+  kana: string;
+  romaji: string;
+  type: 'hiragana' | 'katakana';
+  category?: 'basic' | 'dakuten' | 'handakuten' | 'yoon'; // ← GUNAKAN category
+  row?: string;
+}
+
