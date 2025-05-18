@@ -1,4 +1,4 @@
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 import React, { useState, useEffect, useRef } from 'react';
 import { useGame } from '../context/GameContext';
 import Button from './common/Button';
@@ -23,6 +23,7 @@ const useWindowSize = () => {
 	return size;
 };
 
+
 const GameScreen: React.FC = () => {
 	const { state, dispatch } = useGame();
 	const {
@@ -39,6 +40,9 @@ const GameScreen: React.FC = () => {
 	const [showResult, setShowResult] = useState<'correct' | 'incorrect' | null>(null);
 	const [showHint, setShowHint] = useState(false);
 	const inputRef = useRef<HTMLInputElement>(null);
+	const [showTimeoutMessage, setShowTimeoutMessage] = useState(false);
+
+	const FEEDBACK_DELAY = 1600; // bisa diubah jadi 2000 (2 detik) kalau mau
 
 	const currentCharacter = characters[currentCharacterIndex];
 
@@ -51,15 +55,34 @@ const GameScreen: React.FC = () => {
 		setShowHint(false);
 	}, [currentCharacterIndex]);
 
+	useEffect(() => {
+		if (options.characterTimer) {
+			dispatch({ type: 'STOP_CHARACTER_TIMER' }); // stop current timer
+			setTimeout(() => {
+				dispatch({ type: 'START_CHARACTER_TIMER' }); // restart after short delay
+			}, 50); // 50ms delay to ensure unmount/remount
+		}
+	}, [currentCharacterIndex]);
+
+
+
 	const handleTimerExpired = () => {
 		dispatch({ type: 'STOP_TIMER' });
 		dispatch({ type: 'SET_GAME_STATUS', payload: 'results' });
 	};
 
 	const handleCharacterTimerExpired = () => {
-		dispatch({ type: 'STOP_CHARACTER_TIMER' });
-		handleSkip();
+		setShowResult('incorrect');
+		setShowTimeoutMessage(true);
+
+		setTimeout(() => {
+			setShowResult(null);
+			setShowTimeoutMessage(false);
+			dispatch({ type: 'SUBMIT_ANSWER', payload: '' });
+		}, FEEDBACK_DELAY);
 	};
+
+
 
 	const handleSubmit = (value?: string) => {
 		const answer = value ?? inputValue.trim();
@@ -70,10 +93,26 @@ const GameScreen: React.FC = () => {
 
 		setTimeout(() => {
 			dispatch({ type: 'SUBMIT_ANSWER', payload: answer });
+
+			// Tambahkan ini untuk restart timer karakter
+			if (options.characterTimer) {
+				dispatch({ type: 'START_CHARACTER_TIMER' });
+			}
+
 			setInputValue('');
 			setShowResult(null);
 		}, FEEDBACK_DELAY);
 	};
+
+	const handleSkip = () => {
+		dispatch({ type: 'SUBMIT_ANSWER', payload: '' });
+
+		// Tambahkan ini juga
+		if (options.characterTimer) {
+			dispatch({ type: 'START_CHARACTER_TIMER' });
+		}
+	};
+
 
 	const handleKeyDown = (e: React.KeyboardEvent) => {
 		if (e.key === 'Enter') {
@@ -81,9 +120,6 @@ const GameScreen: React.FC = () => {
 		}
 	};
 
-	const handleSkip = () => {
-		dispatch({ type: 'SUBMIT_ANSWER', payload: '' });
-	};
 
 	const toggleHint = () => {
 		setShowHint(!showHint);
@@ -105,7 +141,7 @@ const GameScreen: React.FC = () => {
 		<Layout>
 			<div className="flex flex-col items-center">
 				<div className="w-full max-w-3xl mb-6">
-
+					{/* TOP SECTION (only game session timer here) */}
 					<div className="flex justify-between items-center mb-2">
 						<span className="text-sm font-medium text-gray-600">
 							{t('game.characterProgress', {
@@ -113,36 +149,46 @@ const GameScreen: React.FC = () => {
 								total: characters.length
 							})}
 						</span>
-						<div className="flex gap-4">
-							{options.characterTimer && (
-								<Timer
-									initialSeconds={options.characterTimerDuration}
-									isActive={characterTimerActive}
-									onTimeout={handleCharacterTimerExpired}
-									className="w-48"
-								/>
-							)}
+						<div>
 							{options.useTimer && (
-								<Timer
-									initialSeconds={options.timerDuration}
-									isActive={timerActive}
-									onTimeout={handleTimerExpired}
-									className="w-48"
-								/>
+								<div className="text-right">
+									<p className="text-xs text-gray-600 mb-1">Session Time</p>
+									<Timer
+										initialSeconds={options.timerDuration}
+										isActive={timerActive}
+										onTimeout={handleTimerExpired}
+										className="w-48"
+									/>
+								</div>
 							)}
 						</div>
 					</div>
-					<div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+
+					<div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden mb-6">
 						<div
 							className="h-full bg-indigo-600 transition-all duration-500"
 							style={{ width: `${progressPercentage}%` }}
 						/>
 					</div>
+
 				</div>
 
 				<Card className="w-full max-w-2xl">
 					<CardContent className="flex flex-col items-center py-10 relative">
 						<AnimatePresence mode="wait">
+							{options.characterTimer && (
+								<div className="mb-4">
+									<Timer
+										key={currentCharacterIndex}
+										initialSeconds={options.characterTimerDuration}
+										isActive={characterTimerActive}
+										onTimeout={handleCharacterTimerExpired}
+										className="w-40"
+										hideLabel
+										hideProgress
+									/>
+								</div>
+							)}
 							<motion.div
 								initial={false}
 								animate={{
@@ -160,6 +206,8 @@ const GameScreen: React.FC = () => {
 							>
 								{currentCharacter.kana}
 							</motion.div>
+
+
 						</AnimatePresence>
 
 						{/* Answer Input or Choices */}
@@ -219,11 +267,22 @@ const GameScreen: React.FC = () => {
 									transition={{ duration: 0.3 }}
 									className="text-red-600 mb-4 text-center"
 								>
-									<p className="font-bold">{t('game.incorrect')}</p>
-									<p>{t('game.correctAnswer', { answer: currentCharacter.romaji })}</p>
+									<p className="font-bold">
+										{showTimeoutMessage ? t('game.notAnswer') : t('game.incorrect')}
+									</p>
+									<p>
+										<Trans
+											i18nKey="game.correctAnswer"
+											values={{ answer: currentCharacter.romaji }}
+											components={{ strong: <strong /> }}
+										/>
+									</p>
+
+
 								</motion.div>
 							)}
 						</AnimatePresence>
+
 
 						{showHint && (
 							<div className="text-gray-700 bg-gray-50 p-3 rounded-lg border border-gray-200 text-center mb-4">

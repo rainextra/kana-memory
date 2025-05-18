@@ -1,3 +1,5 @@
+// ✅ Final update for OptionsScreen.tsx with clean layout, i18n, and consistent structure
+
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../context/GameContext';
@@ -13,7 +15,7 @@ const OptionsScreen: React.FC = () => {
 
 	return (
 		<Layout>
-			<div className="flex flex-col items-center">
+			<div className="flex flex-col items-center px-4">
 				<div className="text-center mb-8">
 					<h1 className="text-4xl font-bold text-gray-800 mb-2">
 						{t('options.title')}
@@ -23,7 +25,7 @@ const OptionsScreen: React.FC = () => {
 					</p>
 				</div>
 
-				<Card className="w-full max-w-2xl">
+				<Card className="w-full max-w-3xl">
 					<CardHeader className="flex items-center justify-between">
 						<div className="flex items-center">
 							<Settings className="h-5 w-5 text-gray-500 mr-2" />
@@ -42,128 +44,169 @@ const OptionsScreen: React.FC = () => {
 						</Button>
 					</CardHeader>
 
-					<CardContent>
-						<div className="space-y-6">
-
-							{/* Special Characters */}
-							<div className="space-y-3">
-								<label className="text-lg font-medium text-gray-700 block">
-									{t('options.specialCharacters')}
-								</label>
-								<div className="flex flex-col sm:flex-row gap-3">
-									<div className="flex items-center">
+					<CardContent className="space-y-6">
+						{/* Special Characters */}
+						<section>
+							<label className="text-base font-medium text-gray-700 block mb-4 text-center">
+								{t('options.specialCharacters')}
+							</label>
+							<div className="space-y-4 max-w-md mx-auto">
+								{/* Include Yōon */}
+								<div className="flex items-center gap-4 px-4 py-3 rounded-lg">
+									<label className="relative inline-flex items-center cursor-pointer">
 										<input
 											type="checkbox"
-											id="includeYoon"
-											className="h-5 w-5 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500"
 											checked={options.includeYoon}
-											onChange={(e) => dispatch({ type: 'SET_INCLUDE_YOON', payload: e.target.checked })}
+											onChange={(e) =>
+												dispatch({ type: 'SET_INCLUDE_YOON', payload: e.target.checked })
+											}
+											className="sr-only peer"
 										/>
-										<label htmlFor="includeYoon" className="ml-2 text-base text-gray-700">
-											{t('options.includeYoon')}
-										</label>
-									</div>
+										<div className="w-11 h-6 rounded-full peer peer-focus:ring-2 peer-focus:ring-indigo-500 
+          dark:bg-gray-400 peer-checked:bg-indigo-500 
+          after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300
+          after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full peer-checked:after:border-white">
+										</div>
+									</label>
+									<span className="text-sm text-gray-800 font-medium">
+										{t('options.includeYoon')}
+									</span>
+								</div>
 
-									<div className="flex items-center">
+								{/* Include Dakuten & Handakuten */}
+								<div className="flex items-center gap-4 px-4 py-3 rounded-lg">
+									<label className="relative inline-flex items-center cursor-pointer">
 										<input
 											type="checkbox"
-											id="includeDakutenHandakuten"
-											className="h-5 w-5 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500"
 											checked={options.includeDakutenHandakuten}
-											onChange={(e) => dispatch({ type: 'SET_INCLUDE_DAKUTEN_HANDAKUTEN', payload: e.target.checked })}
+											onChange={(e) =>
+												dispatch({ type: 'SET_INCLUDE_DAKUTEN_HANDAKUTEN', payload: e.target.checked })
+											}
+											className="sr-only peer"
 										/>
-										<label htmlFor="includeDakutenHandakuten" className="ml-2 text-base text-gray-700">
-											{t('options.includeDakuten')}
-										</label>
-									</div>
-								</div>
-							</div>
-
-							{/* Character Count */}
-							<div className="space-y-3">
-								<label className="text-lg font-medium text-gray-700 block">
-									{t('options.characterCount')}
-								</label>
-								<div className="flex flex-wrap gap-2">
-									{[5, 10, 20, 30, 50].map((count) => (
-										<Button
-											key={count}
-											variant={options.characterCount === count ? 'primary' : 'outline'}
-											size="sm"
-											onClick={() => dispatch({ type: 'SET_CHARACTER_COUNT', payload: count })}
-										>
-											{count}
-										</Button>
-									))}
-								</div>
-							</div>
-
-							{/* Timer Options */}
-							<div className="space-y-3">
-								<label className="text-lg font-medium text-gray-700 flex items-center">
-									<Clock className="h-5 w-5 mr-2" />
-									{t('options.timerOptions')}
-								</label>
-
-								<div className="flex items-center">
-									<input
-										type="checkbox"
-										id="useTimer"
-										className="h-5 w-5 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500"
-										checked={options.useTimer}
-										onChange={(e) => dispatch({ type: 'SET_USE_TIMER', payload: e.target.checked })}
-									/>
-									<label htmlFor="useTimer" className="ml-2 text-base text-gray-700">
-										{t('options.enableTimer')}
+										<div className="w-11 h-6 rounded-full peer peer-focus:ring-2 peer-focus:ring-indigo-500 
+          dark:bg-gray-400 peer-checked:bg-indigo-500 
+          after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300
+          after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full peer-checked:after:border-white">
+										</div>
 									</label>
+									<span className="text-sm text-gray-800 font-medium">
+										{t('options.includeDakuten')}
+									</span>
+								</div>
+							</div>
+						</section>
+
+
+						{/* Character count */}
+						<section className="text-center">
+							<label className="text-base font-medium text-gray-700 block mb-4">
+								{t('options.characterCount')}
+							</label>
+							<div className="inline-flex flex-wrap justify-center gap-3">
+								{[5, 10, 20, 30, 50].map((count) => (
+									<button
+										key={count}
+										className={`rounded-full px-5 py-2 text-base font-medium transition 
+          ${options.characterCount === count
+												? 'bg-indigo-500 text-white shadow'
+												: 'bg-gray-100 text-gray-800 hover:bg-white'}`}
+										onClick={() => dispatch({ type: 'SET_CHARACTER_COUNT', payload: count })}
+									>
+										{count}
+									</button>
+								))}
+							</div>
+						</section>
+
+
+						{/* Timer settings */}
+						<section>
+							<label className="text-base font-medium text-gray-700 block mb-4 text-center">
+								{t('options.timerOptions')}
+							</label>
+							<div className="space-y-4 max-w-md mx-auto">
+								{/* Toggle game session timer */}
+								<div className="flex items-center gap-4 px-4 py-3 rounded-lg">
+									<label className="relative inline-flex items-center cursor-pointer">
+										<input
+											type="checkbox"
+											checked={options.useTimer}
+											onChange={(e) => dispatch({ type: 'SET_USE_TIMER', payload: e.target.checked })}
+											className="sr-only peer"
+										/>
+										<div className="w-11 h-6 bg-gray-300 rounded-full peer peer-checked:bg-indigo-500 
+          after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white 
+          after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full">
+										</div>
+									</label>
+									<span className="text-sm text-gray-800 font-medium">
+										{t('options.enableTimerSession')}
+									</span>
 								</div>
 
+								{/* Timer duration */}
 								{options.useTimer && (
-									<div className="pl-7 space-y-2">
-										<label className="text-sm font-medium text-gray-700 block">
+									<div className="text-center">
+										<p className="text-sm text-gray-700 font-medium mb-2">
 											{t('options.timerDuration')}
-										</label>
-										<div className="flex flex-wrap gap-2">
-											{[60, 120, 180, 300].map((seconds) => (
-												<Button
-													key={seconds}
-													variant={options.timerDuration === seconds ? 'primary' : 'outline'}
-													size="sm"
-													onClick={() => dispatch({ type: 'SET_TIMER_DURATION', payload: seconds })}
+										</p>
+										<div className="inline-flex flex-wrap justify-center gap-2">
+											{[15, 30, 60, 120, 180, 240, 300, 600].map((sec) => (
+												<button
+													key={sec}
+													className={`rounded-full px-5 py-2 text-sm font-medium transition 
+                ${options.timerDuration === sec
+															? 'bg-indigo-500 text-white shadow'
+															: 'bg-gray-100 text-gray-800 hover:bg-white'}`}
+													onClick={() => dispatch({ type: 'SET_TIMER_DURATION', payload: sec })}
 												>
-													{t('options.minutes', { count: seconds / 60 })}
-												</Button>
+													{sec >= 60
+														? `${Math.floor(sec / 60)}m${sec % 60 > 0 ? ` ${sec % 60}s` : ''}`
+														: `${sec}s`}
+												</button>
 											))}
 										</div>
 									</div>
 								)}
 							</div>
+						</section>
 
-							{/* Answer Mode */}
-							<div className="space-y-3">
-								<label className="text-lg font-medium text-gray-700 block">
-									{t('options.answerMode')}
-								</label>
-								<div className="flex gap-2">
-									<Button
-										variant={options.answerMode === 'typing' ? 'primary' : 'outline'}
-										size="sm"
-										onClick={() => dispatch({ type: 'SET_ANSWER_MODE', payload: 'typing' })}
-									>
-										<Edit3 className="h-4 w-4 mr-1" />
-										{t('options.typing')}
-									</Button>
-									<Button
-										variant={options.answerMode === 'multiple-choice' ? 'primary' : 'outline'}
-										size="sm"
-										onClick={() => dispatch({ type: 'SET_ANSWER_MODE', payload: 'multiple-choice' })}
-									>
-										<ListChecks className="h-4 w-4 mr-1" />
-										{t('options.multipleChoice')}
-									</Button>
-								</div>
+
+						{/* Answer Mode */}
+						<section className="text-center">
+							<label className="text-base font-medium text-gray-700 block mb-4">
+								{t('options.answerMode')}
+							</label>
+							<div className="inline-flex bg-gray-200 rounded-full p-1">
+								<button
+									className={`
+        flex items-center gap-2 px-5 py-2 text-sm font-semibold rounded-full transition-all duration-200
+        ${options.answerMode === 'typing'
+											? 'bg-indigo-500 text-white shadow-md'
+											: 'text-gray-700'}
+      `}
+									onClick={() => dispatch({ type: 'SET_ANSWER_MODE', payload: 'typing' })}
+								>
+									<Edit3 className="h-4 w-4" />
+									{t('options.typing')}
+								</button>
+								<button
+									className={`
+        flex items-center gap-2 px-5 py-2 text-sm font-semibold rounded-full transition-all duration-200
+        ${options.answerMode === 'multiple-choice'
+											? 'bg-indigo-500 text-white shadow-md'
+											: 'text-gray-700'}
+      `}
+									onClick={() => dispatch({ type: 'SET_ANSWER_MODE', payload: 'multiple-choice' })}
+								>
+									<ListChecks className="h-4 w-4" />
+									{t('options.multipleChoice')}
+								</button>
 							</div>
-						</div>
+						</section>
+
+
 					</CardContent>
 
 					<CardFooter className="flex justify-end">

@@ -39,18 +39,22 @@
 		"includeDakuten": "Sertakan Dakuten & Handakuten",
 		"characterCount": "Jumlah Karakter",
 		"timerOptions": "Pengaturan Waktu",
-		"enableTimer": "Aktifkan Timer",
+		"enableTimer": "Aktifkan timer per sesi game",
 		"timerDuration": "Batas Waktu (dalam detik)",
 		"minutes": "{{count}} menit",
 		"minutes_plural": "{{count}} menit",
 		"answerMode": "Jenis Jawaban",
 		"typing": "Ketik Manual",
-		"multipleChoice": "Pilihan Ganda"
+		"multipleChoice": "Pilihan Ganda",
+		"characterTimerLabel": "Timer per Karakter",
+		"enableCharacterTimer": "Aktifkan timer untuk setiap karakter",
+		"enableTimerSession": "Aktifkan timer per sesi game"
 	},
 	"selection": {
 		"title": "Pilih Karakter",
 		"subtitle": "Pilih karakter {{type}} yang ingin Anda latih",
 		"mode": {
+			"label": "Mode Pemilihan Huruf",
 			"random": "Pilihan Acak",
 			"manual": "Pilihan Manual"
 		},
@@ -72,7 +76,8 @@
 		"timeRemaining": "Sisa Waktu",
 		"typeRomaji": "Ketik romaji...",
 		"incorrect": "Salah!",
-		"correctAnswer": "Jawaban yang benar adalah: {{answer}}",
+		"notAnswer": "Waktu Habis!",
+		"correctAnswer": "Jawaban yang benar adalah: <strong>{{answer}}</strong>",
 		"characterProgress": "Karakter ke-{{current}} dari {{total}}",
 		"hint": {
 			"text": "Ini adalah karakter {{type}}{{category}}. Huruf pertama adalah \"{{letter}}\".",

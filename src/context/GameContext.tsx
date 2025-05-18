@@ -11,7 +11,7 @@ const initialOptions: GameOptions = {
 	characterCount: 10,
 	selectedCharacters: [],
 	useTimer: false,
-	timerDuration: 120, // 2 minutes
+	timerDuration: 60, // 2 minutes
 	characterTimer: false,
 	characterTimerDuration: 10, // 10 seconds per character
 	shuffleManualSelection: true,

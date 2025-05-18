@@ -45,12 +45,16 @@
 		"minutes_plural": "{{count}} minutes",
 		"answerMode": "Answer Mode",
 		"typing": "Manual Typing",
-		"multipleChoice": "Multiple Choice"
+		"multipleChoice": "Multiple Choice",
+		"characterTimerLabel": "Character Timer",
+		"enableCharacterTimer": "Enable per-character timer",
+		"enableTimerSession": "Enable timer per game session"
 	},
 	"selection": {
 		"title": "Select Characters",
 		"subtitle": "Choose which {{type}} characters you want to practice",
 		"mode": {
+			"label": "Character Selection Mode",
 			"random": "Random Selection",
 			"manual": "Manual Selection"
 		},
@@ -72,7 +76,8 @@
 		"timeRemaining": "Time Remaining",
 		"typeRomaji": "Type the romaji...",
 		"incorrect": "Incorrect!",
-		"correctAnswer": "The correct answer is: {{answer}}",
+		"notAnswer": "Time UP!",
+		"correctAnswer": "The correct answer is: <strong>{{answer}}</strong>",
 		"characterProgress": "Character {{current}} of {{total}}",
 		"hint": {
 			"text": "This is a {{type}} character{{category}}. The first letter is \"{{letter}}\".",
